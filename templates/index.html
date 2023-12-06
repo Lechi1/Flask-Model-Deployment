@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Index Prediction</title>
+    <style>
+        /* Add any additional styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        .prediction-box {
+            border: 2px solid #3498db;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 20px;
+            max-width: 300px;
+            text-align: center;
+            background-color: #ecf0f1;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .prediction-text {
+            color: #34db45;
+            font-weight: bold;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    {% if prediction is not none %}
+    
+        <p class="prediction-text">Prediksi Health Index </p> 
+        <p class="prediction-text">{{ prediction }}</p>
+    
+    {% endif %}
+    <h1>Health Index Prediction</h1>
+    
+   
+
+
+
+    <form action="{{ url_for('index') }}" method="post">
+        <label for="kapasitas">Kapasitas Trafo:</label>
+        <input type="text" id="kapasitas" name="kapasitas" required>
+
+        <label for="prabayar_daya">Jumlah Daya Prabayar:</label>
+        <input type="text" id="prabayar_daya" name="prabayar_daya" required>
+
+        <label for="prabayar_transaksi">Jumlah Transaksi Prabayar:</label>
+        <input type="text" id="prabayar_transaksi" name="prabayar_transaksi" required>
+
+        <label for="prabayar_kwh">Jumlah Energi/kWh Prabayar:</label>
+        <input type="text" id="prabayar_kwh" name="prabayar_kwh" required>
+
+        <label for="paska_daya">Jumlah Daya Paskabayar:</label>
+        <input type="text" id="paska_daya" name="paska_daya" required>
+
+        <label for="paska_plgn">Jumlah Pelanggan Paskabayar:</label>
+        <input type="text" id="paska_plgn" name="paska_plgn" required>
+
+        <label for="paska_kwh">Jumlah Energi/kWh Paskabayar:</label>
+        <input type="text" id="paska_kwh" name="paska_kwh" required>
+
+        <input type="submit" value="Predict Health Index">
+    </form>
+
+</body>
+</html>
